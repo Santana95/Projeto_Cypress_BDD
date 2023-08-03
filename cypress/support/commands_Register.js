@@ -23,8 +23,5 @@ Cypress.Commands.add("fillPasswordRegister", (password) => {
 Cypress.Commands.add("checkSuccessMessageRegister", (message, randomName) => {
   cy.get("#swal2-title").should("have.text", message);
 
-  cy.get("#swal2-html-container").should(
-    "have.text",
-    `Bem-vindo ${randomName}`
-  );
+  cy.get("#swal2-html-container").should("have.text", `Bem-vindo ${randomName}`);
 });
