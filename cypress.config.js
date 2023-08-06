@@ -11,6 +11,7 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
+  projectId: 'yawfo2',
   e2e: {
     reporter: "cypress-mochawesome-reporter",
     reporterOptions: {
