@@ -34,6 +34,6 @@ jobs:
       # upload do relatório do mocha
       - name: report upload
         uses: actions/upload-artifact@v3
-          with:
-            name: report_my-artifact
-            path: cypress/reports/html
+        with:
+          name: report_my-artifact
+          path: cypress/reports/html
