@@ -1,0 +1,33 @@
+# Nome da Pipeline;
+name: End-to-end tests
+
+# Em que momento ela será executada;
+on: 
+  pull_request: 
+    branches: [master]
+  
+jobs:
+  # O que vai ser feito nessa pipeline;
+  cypress-run:
+    
+    # Máquina que será executado Windows, Mac, Linux;
+    runs-on: ubuntu-latest
+
+    # Passo a passo para rodar os testes;
+    steps:
+      # Clone do projeto
+      - name: Project Clone
+        uses: actions/checkout@v3
+
+      # Exemplo de execução do terminal; 
+      - name: Install project dependencies
+        run: npm install
+
+      # Execução e configuração do projeto;
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with: 
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        
