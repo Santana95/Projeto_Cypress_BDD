@@ -11,13 +11,17 @@ jobs:
   cypress-run:
     
     # Máquina que será executado Windows, Mac, Linux;
-    runs-on: windows
+    runs-on: ubuntu-latest
 
     # Passo a passo para rodar os testes;
     steps:
       # Clone do prjeto
       - name: Checkout/Clone do projeto
         uses: actions/checkout@v3
+
+      # Exemplo de execução do terminal; 
+      - name: Instalar dependencias do projeto
+        run: npm install
 
       # Execução e configuração do projeto;
       - name: Cypress run
