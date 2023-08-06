@@ -1,5 +1,5 @@
 # Nome da Pipeline;
-name: Run Basic Tests
+name: End-to-end tests
 
 # Em que momento ela será executada;
 on: 
@@ -15,12 +15,12 @@ jobs:
 
     # Passo a passo para rodar os testes;
     steps:
-      # Clone do prjeto
-      - name: Checkout/Clone do projeto
+      # Clone do projeto
+      - name: Project Clone
         uses: actions/checkout@v3
 
       # Exemplo de execução do terminal; 
-      - name: Instalar dependencias do projeto
+      - name: Install project dependencies
         run: npm install
 
       # Execução e configuração do projeto;
