@@ -1,5 +1,10 @@
 # Projeto Cypress BDD 🚀
 
+[![Cypress Tests](https://github.com/Ian%20Charlesson/Projeto_Cypress_BDD/actions/workflows/cypress.yml/badge.svg)](https://github.com/Ian%20Charlesson/Projeto_Cypress_BDD/actions/workflows/cypress.yml)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](https://nodejs.org/)
+[![Cypress Version](https://img.shields.io/badge/cypress-%5E12.0-brightgreen)](https://cypress.io)
+[![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](LICENSE)
+
 Automação de testes end-to-end usando **Cypress** com **BDD (Behavior-Driven Development)** em Gherkin, focado em validar fluxos críticos de uma aplicação web de e-commerce.
 
 ## 📋 Características
