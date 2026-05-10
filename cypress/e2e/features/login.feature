@@ -1,32 +1,44 @@
-Feature: Login
-  me as a customer
-  want to login to the application
-  To place a purchase order
+# language: pt
 
-  Background: Access login screen
-    Given I am on login screen
+@login
+Funcionalidade: Login
+    Como um cliente
+    Eu quero realizar login na aplicação
+    Para que eu possa fazer pedidos de compra
 
-  Scenario: Login with empty email field    
-    When I click on Login
-    Then I see the message "E-mail inválido."
+    Contexto: Acessar tela de login
+        Dado que eu estou na tela de login
 
-  Scenario: Login with invalid email field    
-    And I fill invalid e-mail
-    When I click on Login
-    Then I see the message "E-mail inválido."
+    @ct01
+Esquema do Cenario: Login com email invalido
+Quando eu preencho o campo email com "<email>"
+E clico em Login
+Entao devo ver a mensagem de erro "E-mail inválido."
 
-  Scenario: Login with empty password field
-    And I fill e-mail 
-    When I click on Login
-    Then I see the message "Senha inválida."
+Exemplos:
+| email         |
+|               |
+| email-invalido|
+| teste@        |
+| @semdominio   |
 
-  Scenario: Login with invalid password field
-    And I fill e-mail 
-    And I fill invalid password
-    When I click on Login
-    Then I see the message "Senha inválida."
+    @ct02
+Esquema do Cenario: Login com senha invalida
+Quando eu preencho o campo email com "usuario@exemplo.com"
+E preencho o campo senha com "<senha>"
+E clico em Login
+Entao devo ver a mensagem de erro "Senha inválida."
 
-  Scenario: login successfully
-    And I fill my credentials 
-    When I click on Login
-    Then I see success message "Login realizado"
+Exemplos:
+      | id    | senha      |
+      | CT004 |            |
+      | CT005 | 123        |
+| abc    |
+| senhacurta |
+
+    @ct05
+    Cenario: Login com sucesso
+        Quando eu preencho o campo email com "usuario@exemplo.com"
+        E preencho o campo senha com "senhaValida123"
+        E clico em Login
+        Entao devo ver a mensagem de sucesso "Login realizado"
