@@ -1,27 +1,27 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.add("register", () => {
+Cypress.Commands.add("registrar", () => {
   cy.get("#btnRegister").click();
 });
 
-Cypress.Commands.add("checkErrorMessageRegister", (message) => {
-  cy.get("#errorMessageFirstName").should("have.text", message);
+Cypress.Commands.add("verificarMensagemErroRegistro", (mensagem) => {
+  cy.get("#errorMessageFirstName").should("have.text", mensagem);
 });
 
-Cypress.Commands.add("fillNameRegister", (name) => {
-  cy.get("#user").type(name, { force: true });
+Cypress.Commands.add("preencherNomeRegistro", (nome) => {
+  cy.get("#user").type(nome, { force: true });
 });
 
-Cypress.Commands.add("fillEmailRegister", (email) => {
+Cypress.Commands.add("preencherEmailRegistro", (email) => {
   cy.get("#email").type(email);
 });
 
-Cypress.Commands.add("fillPasswordRegister", (password) => {
-  cy.get("#password").type(password);
+Cypress.Commands.add("preencherSenhaRegistro", (senha) => {
+  cy.get("#password").type(senha);
 });
 
-Cypress.Commands.add("checkSuccessMessageRegister", (message, randomName) => {
-  cy.get("#swal2-title").should("have.text", message);
+Cypress.Commands.add("verificarMensagemSucessoRegistro", (mensagem, nomeAleatorio) => {
+  cy.get("#swal2-title").should("have.text", mensagem);
 
-  cy.get("#swal2-html-container").should("have.text", `Bem-vindo ${randomName}`);
+  cy.get("#swal2-html-container").should("have.text", `Bem-vindo ${nomeAleatorio}`);
 });

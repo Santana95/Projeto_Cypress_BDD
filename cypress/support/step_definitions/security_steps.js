@@ -21,8 +21,8 @@ const homePage = new HomePage();
 // QUANDO / WHEN - Steps de Ação (Específicos de Segurança)
 // =============================================================
 
-When("eu clico em Login {string} vezes com credenciais inválidas", (times) => {
-  for (let i = 0; i < parseInt(times); i++) {
+When("eu clico em Login {string} vezes com credenciais inválidas", (vezes) => {
+  for (let i = 0; i < parseInt(vezes); i++) {
     loginPage.fillEmail("teste@invalido.com");
     loginPage.fillPassword("senhaInvalida");
     loginPage.clickLoginButton();
@@ -35,12 +35,12 @@ When("eu clico em Login {string} vezes com credenciais inválidas", (times) => {
 // ENTÃO / THEN - Steps de Validação (Específicos de Segurança)
 // =============================================================
 
-Then("o campo de senha deve ter tipo {string}", (type) => {
-  loginPage.verifyPasswordInputType(type);
+Then("o campo de senha deve ter tipo {string}", (tipo) => {
+  loginPage.verifyPasswordInputType(tipo);
 });
 
-Then("o campo de email tem tipo {string}", (type) => {
-  loginPage.verifyEmailInputType(type);
+Then("o campo de email tem tipo {string}", (tipo) => {
+  loginPage.verifyEmailInputType(tipo);
 });
 
 Then("devo ver mensagem de validação", () => {
@@ -107,10 +107,10 @@ Then("registro deve ser bem-sucedido", () => {
   registerPage.verifyRegisterSuccess("Cadastro realizado!", "Teste User");
 });
 
-Then("devo ver erro {string}", (message) => {
+Then("devo ver erro {string}", (mensagem) => {
   cy.get(".invalid_input, [role='alert'], .error-message").should(
     "contain",
-    message
+    mensagem
   );
 });
 
@@ -122,15 +122,15 @@ Then("a aplicação deve ter headers de segurança adequados", () => {
   });
 });
 
-Then("o header {string} deve ser {string}", (headerName, expectedValue) => {
+Then("o header {string} deve ser {string}", (nomeCabecalho, valorEsperado) => {
   cy.request("/").then((response) => {
-    expect(response.headers[headerName.toLowerCase()]).to.equal(expectedValue);
+    expect(response.headers[nomeCabecalho.toLowerCase()]).to.equal(valorEsperado);
   });
 });
 
-Then("o header {string} deve estar presente", (headerName) => {
+Then("o header {string} deve estar presente", (nomeCabecalho) => {
   cy.request("/").then((response) => {
-    expect(response.headers[headerName.toLowerCase()]).to.exist;
+    expect(response.headers[nomeCabecalho.toLowerCase()]).to.exist;
   });
 });
 

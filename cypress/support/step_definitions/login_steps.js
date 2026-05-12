@@ -11,7 +11,7 @@ const emailAleatorio = faker.internet.email();
 // =============================================================
 
 Given("que eu estou na tela de login", () => {
-  cy.acessLogin();
+  cy.acessarTelaLogin();
 });
 
 Given("eu preencho o campo email com {string}", (email) => {

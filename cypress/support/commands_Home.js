@@ -1,12 +1,12 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.add("acessLogin", () => {
+Cypress.Commands.add("acessarTelaLogin", () => {
   cy.visit("/").get("#top_header");
 
   cy.get(".fa-user").click();
 });
 
-Cypress.Commands.add("acessRegister", () => {
+Cypress.Commands.add("acessarTelaRegistro", () => {
   cy.visit("/").get("#top_header");
 
   cy.get(".fa-lock").click();

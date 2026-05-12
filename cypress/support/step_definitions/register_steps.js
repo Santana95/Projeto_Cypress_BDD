@@ -4,43 +4,43 @@ import "../commands_Home.js";
 import "../commands_Login.js";
 import "../commands_Register.js";
 
-const randomName = faker.person.fullName();
-const randomEmail = faker.internet.email();
+const nomeAleatorio = faker.person.fullName();
+const emailAleatorio = faker.internet.email();
 
-Given("I am on register screen", () => {
-  cy.acessRegister();
+Given("que estou na tela de registro", () => {
+  cy.acessarTelaRegistro();
 });
 
-Given("I fill name", () => {
-  cy.fillNameRegister(randomName);
+Given("eu preencho o nome", () => {
+  cy.preencherNomeRegistro(nomeAleatorio);
 });
 
-Given("I fill e-mail register", () => {
-  cy.fillEmailRegister(randomEmail);
+Given("eu preencho o e-mail no registro", () => {
+  cy.preencherEmailRegistro(emailAleatorio);
 });
 
-Given("I fill invalid e-mail register", () => {
-  cy.fillEmailRegister(randomName);
+Given("eu preencho um e-mail inválido no registro", () => {
+  cy.preencherEmailRegistro(nomeAleatorio);
 });
 
-Given("I fill invalid password register", () => {
-  cy.fillPasswordRegister("12345");
+Given("eu preencho uma senha inválida no registro", () => {
+  cy.preencherSenhaRegistro("12345");
 });
 
-Given("I fill my datas of register", () => {
-  cy.fillNameRegister(randomName);
-  cy.fillEmailRegister(randomEmail);
-  cy.fillPasswordRegister("123456");
+Given("eu preencho meus dados para registro", () => {
+  cy.preencherNomeRegistro(nomeAleatorio);
+  cy.preencherEmailRegistro(emailAleatorio);
+  cy.preencherSenhaRegistro("123456");
 });
 
-When("I click on register", () => {
-  cy.register();
+When("clico em registrar", () => {
+  cy.registrar();
 });
 
-Then("I see message {string} on register", (message) => {
-  cy.checkErrorMessageRegister(message);
+Then("vejo a mensagem {string} no registro", (mensagem) => {
+  cy.verificarMensagemErroRegistro(mensagem);
 });
 
-Then("I see success message {string} on register", (message) => {
-  cy.checkSuccessMessageRegister(message, randomName);
+Then("vejo a mensagem de sucesso {string} no registro", (mensagem) => {
+  cy.verificarMensagemSucessoRegistro(mensagem, nomeAleatorio);
 });
