@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+require("dotenv").config();
 
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 
@@ -16,13 +17,13 @@ module.exports = defineConfig({
     reporter: "cypress-mochawesome-reporter",
     reporterOptions: {
       charts: true,
-      reportTitle: "Projeto_Cypress_BDD",
-      reportPageTitle: "Projeto_Cypress_BDD",
+      reportTitle: process.env.CYPRESS_REPORT_TITLE || "Projeto_Cypress_BDD",
+      reportPageTitle: process.env.CYPRESS_REPORT_TITLE || "Projeto_Cypress_BDD",
     },
-    baseUrl: "http://automationpratice.com.br",
+    baseUrl: process.env.BASE_URL || "http://automationpratice.com.br",
     viewportWidth: 1400,
     viewportHeight: 750,
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: parseInt(process.env.CYPRESS_DEFAULT_COMMAND_TIMEOUT) || 10000,
     specPattern: "**/*.feature",
     setupNodeEvents(on, config) {
       require("cypress-mochawesome-reporter/plugin")(on);
