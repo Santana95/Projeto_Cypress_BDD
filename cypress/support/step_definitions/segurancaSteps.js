@@ -1,9 +1,9 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { LoginPage } from "../pages/LoginPage";
-import { RegisterPage } from "../pages/RegisterPage";
-import { HomePage } from "../pages/HomePage";
-import "../commands_Login.js";
-import "../commands_Register.js";
+import { LoginPage } from "../pages/LoginPage.js";
+import { RegisterPage } from "../pages/RegisterPage.js";
+import { HomePage } from "../pages/HomePage.js";
+import "../commandsAcesso.js";
+import "../commandsCadastroUsuario.js";
 import "../commands_Home.js";
 
 // Instâncias dos Page Objects

@@ -1,8 +1,8 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { faker } from "@faker-js/faker";
 import "../commands_Home.js";
-import "../commands_Login.js";
-import "../commands_Register.js";
+import "../commandsAcesso.js";
+import "../commandsCadastroUsuario.js";
 
 const nomeAleatorio = faker.person.fullName();
 const emailAleatorio = faker.internet.email();
