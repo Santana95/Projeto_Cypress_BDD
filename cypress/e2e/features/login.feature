@@ -16,31 +16,32 @@
       Contexto: Acessar tela de login
       Dado que eu estou na tela de login
 
-      @TEST_CT005 @Login @validation
-      Esquema do Cenario: <id> Login com email invalido
-      Quando eu preencho o campo email com "<email>"
+      @TEST_CT001 @Login @validation
+      Cenario: CT001 - Login com email invalido (vazio)
+      Quando clico em Login
+      Entao devo ver a mensagem de erro "E-mail inválido."
+
+      @TEST_CT002 @Login @validation
+      Cenario: CT002 - Login com email invalido (formato inválido)
+      Quando eu preencho o campo email com "email-invalido"
       E clico em Login
       Entao devo ver a mensagem de erro "E-mail inválido."
 
-      Exemplos:
-      | id    | email          |
-      | CT001 |                |
-      | CT002 | email-invalido |
-
       @TEST_CT003 @Login @validation
-      Esquema do Cenario: <id> Login com senha invalida
+      Cenario: CT003 - Login com senha invalida (vazio)
       Quando eu preencho o campo email com "usuario@exemplo.com"
-      E preencho o campo senha com "<senha>"
       E clico em Login
       Entao devo ver a mensagem de erro "Senha inválida."
 
-      Exemplos:
-      | id    | senha |
-      | CT003 |       |
-      | CT004 | 123   |
+      @TEST_CT004 @Login @validation
+      Cenario: CT004 - Login com senha invalida (muito curta)
+      Quando eu preencho o campo email com "usuario@exemplo.com"
+      E preencho o campo senha com "123"
+      E clico em Login
+      Entao devo ver a mensagem de erro "Senha inválida."
 
       @TEST_CT005 @Login @smoke
-      Cenario: Login com sucesso
+      Cenario: CT005 - Login com sucesso
       Quando eu preencho o campo email com "usuario@exemplo.com"
       E preencho o campo senha com "senhaValida123"
       E clico em Login

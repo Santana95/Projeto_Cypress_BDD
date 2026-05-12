@@ -2,6 +2,9 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { LoginPage } from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { HomePage } from "../pages/HomePage";
+import "../commands_Login.js";
+import "../commands_Register.js";
+import "../commands_Home.js";
 
 // Instâncias dos Page Objects
 const loginPage = new LoginPage();
@@ -9,55 +12,14 @@ const registerPage = new RegisterPage();
 const homePage = new HomePage();
 
 // =============================================================
-// DADO / GIVEN - Steps de Setup e Pré-condição
+// DADO / GIVEN - Steps de Setup e Pré-condição (Específicos de Segurança)
 // =============================================================
 
-Given("que eu estou na tela de login", () => {
-  loginPage.navigate();
-  loginPage.verifyLoginPageLoaded();
-});
-
-Given("que eu estou na tela de registro", () => {
-  registerPage.navigate();
-  registerPage.verifyRegisterPageLoaded();
-});
-
-Given("que eu acesso a aplicação", () => {
-  homePage.navigate();
-  homePage.verifyHomePageLoaded();
-});
+// Reutiliza steps existentes: que eu estou na tela de login, registro, etc
 
 // =============================================================
-// QUANDO / WHEN - Steps de Ação
+// QUANDO / WHEN - Steps de Ação (Específicos de Segurança)
 // =============================================================
-
-When("eu preencho o campo email com {string}", (email) => {
-  loginPage.fillEmail(email);
-});
-
-When("eu preencho o campo senha com {string}", (password) => {
-  loginPage.fillPassword(password);
-});
-
-When("clico em Login", () => {
-  loginPage.clickLoginButton();
-});
-
-When("eu preencho o campo nome com {string}", (name) => {
-  registerPage.fillName(name);
-});
-
-When("preencho o campo email com {string}", (email) => {
-  registerPage.fillEmail(email);
-});
-
-When("preencho o campo senha com {string}", (password) => {
-  registerPage.fillPassword(password);
-});
-
-When("clico em Registrar", () => {
-  registerPage.clickRegisterButton();
-});
 
 When("eu clico em Login {string} vezes com credenciais inválidas", (times) => {
   for (let i = 0; i < parseInt(times); i++) {
@@ -70,7 +32,7 @@ When("eu clico em Login {string} vezes com credenciais inválidas", (times) => {
 });
 
 // =============================================================
-// ENTÃO / THEN - Steps de Validação de Segurança
+// ENTÃO / THEN - Steps de Validação (Específicos de Segurança)
 // =============================================================
 
 Then("o campo de senha deve ter tipo {string}", (type) => {

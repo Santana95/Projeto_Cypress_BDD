@@ -3,38 +3,54 @@ import { faker } from "@faker-js/faker";
 import "../commands_Home.js";
 import "../commands_Login.js";
 
-const randomName = faker.person.fullName();
-const randomEmail = faker.internet.email();
+const nomeAleatorio = faker.person.fullName();
+const emailAleatorio = faker.internet.email();
 
-Given("I am on login screen", () => {
+// =============================================================
+// DADO / GIVEN - Steps de Setup e Pré-condição
+// =============================================================
+
+Given("que eu estou na tela de login", () => {
   cy.acessLogin();
 });
 
-Given("I fill e-mail", () => {
-  cy.fillEmail(randomEmail);
+Given("eu preencho o campo email com {string}", (email) => {
+  cy.preencherEmail(email);
 });
 
-Given("I fill invalid e-mail", () => {
-  cy.fillEmail(randomName);
+Given("eu preencho o campo email com email inválido", () => {
+  cy.preencherEmail(nomeAleatorio);
 });
 
-Given("I fill invalid password", () => {
-  cy.fillPassword("12345");
+Given("eu preencho o campo senha com senha inválida", () => {
+  cy.preencherSenha("12345");
 });
 
-Given("I fill my credentials", () => {
-  cy.fillEmail(randomEmail);
-  cy.fillPassword("123456");
+Given("eu preencho minhas credenciais", () => {
+  cy.preencherEmail(emailAleatorio);
+  cy.preencherSenha("123456");
 });
 
-When("I click on Login", () => {
-  cy.login();
+// =============================================================
+// QUANDO / WHEN - Steps de Ação
+// =============================================================
+
+When("eu preencho o campo senha com {string}", (senha) => {
+  cy.preencherSenha(senha);
 });
 
-Then("I see the message {string}", (message) => {
-  cy.checkErrorMessage(message);
+When("clico em Login", () => {
+  cy.entrar();
 });
 
-Then("I see success message {string}", (message) => {
-  cy.checkSuccessMessage(message, randomEmail);
+// =============================================================
+// ENTÃO / THEN - Steps de Validação
+// =============================================================
+
+Then("devo ver a mensagem de erro {string}", (mensagem) => {
+  cy.verificarMensagemErro(mensagem);
+});
+
+Then("devo ver a mensagem de sucesso {string}", (mensagem) => {
+  cy.verificarMensagemSucesso(mensagem, emailAleatorio);
 });

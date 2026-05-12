@@ -1,23 +1,23 @@
 /// <reference types="cypress" />
 
-Cypress.Commands.add("login", () => {
+Cypress.Commands.add("entrar", () => {
   cy.get("#btnLogin").click();
 });
 
-Cypress.Commands.add("checkErrorMessage", (message) => {
-  cy.get(".invalid_input").should("have.text", message);
+Cypress.Commands.add("verificarMensagemErro", (mensagem) => {
+  cy.get(".invalid_input").should("have.text", mensagem);
 });
 
-Cypress.Commands.add("fillEmail", (email) => {
+Cypress.Commands.add("preencherEmail", (email) => {
   cy.get("#user").type(email);
 });
 
-Cypress.Commands.add("fillPassword", (password) => {
-  cy.get("#password").type(password);
+Cypress.Commands.add("preencherSenha", (senha) => {
+  cy.get("#password").type(senha);
 });
 
-Cypress.Commands.add("checkSuccessMessage", (message, randomEmail) => {
-  cy.get("#swal2-title").should("have.text", message);
+Cypress.Commands.add("verificarMensagemSucesso", (mensagem, emailAleatorio) => {
+  cy.get("#swal2-title").should("have.text", mensagem);
 
-  cy.get("#swal2-html-container").should("have.text", `Olá, ${randomEmail}`);
+  cy.get("#swal2-html-container").should("have.text", `Olá, ${emailAleatorio}`);
 });

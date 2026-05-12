@@ -49,10 +49,10 @@ Funcionalidade: Segurança
     E o conteúdo deve ser escapado corretamente
 
     Exemplos:
-    | payload                     |
-    | <script>alert('XSS')</script> |
+    | payload                            |
+    | <script>alert('XSS')</script>      |
     | <img src=x onerror="alert('xss')"> |
-    | <svg onload="alert('xss')"> |
+    | <svg onload="alert('xss')">        |
 
   @TEST_SEC_005 @security @storage
   Cenario: Senha não é armazenada em localStorage
@@ -73,10 +73,10 @@ Funcionalidade: Segurança
     Entao <resultado>
 
     Exemplos:
-    | senha            | resultado                                    |
-    |                  | devo ver erro "senha obrigatória"             |
-    | 123              | devo ver erro "mínimo 6 caracteres"           |
-    | senhaValida123   | registro deve ser bem-sucedido                 |
+    | senha          | resultado                           |
+    |                | devo ver erro "senha obrigatória"   |
+    | 123            | devo ver erro "mínimo 6 caracteres" |
+    | senhaValida123 | registro deve ser bem-sucedido      |
 
   @TEST_SEC_007 @security @headers
   Cenario: Validar headers de segurança HTTP
