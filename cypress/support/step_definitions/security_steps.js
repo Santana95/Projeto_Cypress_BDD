@@ -1,10 +1,7 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { LoginPage } from "../pages/LoginPage.js";
-import { RegisterPage } from "../pages/RegisterPage.js";
-import { HomePage } from "../pages/HomePage.js";
-import "../commandsAcesso.js";
-import "../commandsCadastroUsuario.js";
-import "../commands_Home.js";
+import { LoginPage } from "../pages/LoginPage";
+import { RegisterPage } from "../pages/RegisterPage";
+import { HomePage } from "../pages/HomePage";
 
 // Instâncias dos Page Objects
 const loginPage = new LoginPage();
@@ -15,7 +12,19 @@ const homePage = new HomePage();
 // DADO / GIVEN - Steps de Setup e Pré-condição (Específicos de Segurança)
 // =============================================================
 
-// Reutiliza steps existentes: que eu estou na tela de login, registro, etc
+Given("que eu estou na tela de login", () => {
+  loginPage.navigate();
+  loginPage.verifyLoginPageLoaded();
+});
+
+Given("que eu estou na tela de registro", () => {
+  registerPage.navigate();
+  registerPage.verifyRegisterPageLoaded();
+});
+
+Given("que eu acesso a aplicação", () => {
+  homePage.navigate();
+});
 
 // =============================================================
 // QUANDO / WHEN - Steps de Ação (Específicos de Segurança)

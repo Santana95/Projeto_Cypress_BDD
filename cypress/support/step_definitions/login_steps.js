@@ -1,34 +1,35 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { faker } from "@faker-js/faker";
-import "../commands_Home.js";
-import "../commands_Login.js";
+import { LoginPage } from "../pages/LoginPage";
 
-const nomeAleatorio = faker.person.fullName();
-const emailAleatorio = faker.internet.email();
+const loginPage = new LoginPage();
 
 // =============================================================
 // DADO / GIVEN - Steps de Setup e Pré-condição
 // =============================================================
 
 Given("que eu estou na tela de login", () => {
-  cy.acessarTelaLogin();
+  loginPage.navigate();
+  loginPage.verifyLoginPageLoaded();
 });
 
 Given("eu preencho o campo email com {string}", (email) => {
-  cy.preencherEmail(email);
+  loginPage.fillEmail(email);
 });
 
 Given("eu preencho o campo email com email inválido", () => {
-  cy.preencherEmail(nomeAleatorio);
+  const nomeAleatorio = faker.person.fullName();
+  loginPage.fillEmail(nomeAleatorio);
 });
 
 Given("eu preencho o campo senha com senha inválida", () => {
-  cy.preencherSenha("12345");
+  loginPage.fillPassword("12345");
 });
 
 Given("eu preencho minhas credenciais", () => {
-  cy.preencherEmail(emailAleatorio);
-  cy.preencherSenha("123456");
+  const emailAleatorio = faker.internet.email();
+  loginPage.fillEmail(emailAleatorio);
+  loginPage.fillPassword("123456");
 });
 
 // =============================================================
@@ -36,11 +37,11 @@ Given("eu preencho minhas credenciais", () => {
 // =============================================================
 
 When("eu preencho o campo senha com {string}", (senha) => {
-  cy.preencherSenha(senha);
+  loginPage.fillPassword(senha);
 });
 
 When("clico em Login", () => {
-  cy.entrar();
+  loginPage.clickLoginButton();
 });
 
 // =============================================================
@@ -48,9 +49,10 @@ When("clico em Login", () => {
 // =============================================================
 
 Then("devo ver a mensagem de erro {string}", (mensagem) => {
-  cy.verificarMensagemErro(mensagem);
+  loginPage.verifyErrorMessage(mensagem);
 });
 
 Then("devo ver a mensagem de sucesso {string}", (mensagem) => {
-  cy.verificarMensagemSucesso(mensagem, emailAleatorio);
+  const emailAleatorio = faker.internet.email();
+  loginPage.verifyLoginSuccess(mensagem, emailAleatorio);
 });
